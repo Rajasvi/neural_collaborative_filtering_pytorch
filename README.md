@@ -8,7 +8,7 @@ Xiangnan He, Lizi Liao, Hanwang Zhang, Liqiang Nie, Xia Hu and Tat-Seng Chua (20
 
 Through this process we set out to build primarily 3 models: Generalized Matrix Factorization (GMF), Multi-Layer Perceptron (MLP) and Neural Matrix Factorization (NMF) model. We shall then use our implementation to perform prediction and comparative evaluation on the MovieLens dataset. <br>
 
-Please refer to [report]((https://github.com/Rajasvi/neural_collaborative_filtering/blob/master/report.pdf)) for detailed information about the project.
+Please refer to [report](https://github.com/Rajasvi/neural_collaborative_filtering_pytorch/blob/master/report.pdf) for detailed information about the project.
 
 ## Environment Settings
 We solely used PyTorch for model implementation and Plotly-express for plotting model metrics.
