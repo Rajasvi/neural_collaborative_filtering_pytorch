@@ -1,3 +1,12 @@
+"""
+Created on April 5, 2022
+
+PyTorch Implementation of Multi-Layered Perceptron (MLP) based recommender model in:
+He Xiangnan et al. Neural Collaborative Filtering. In WWW 2017.  
+
+@author: Rajasvi Vinayak Sharma (rvsharma@ucsd.edu)
+"""
+
 import argparse
 import torch
 import pandas as pd
@@ -18,7 +27,7 @@ from utils import train, evaluate_test
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 # Sample command
-# python MLP.py --dataset ratings.dat --epochs 2 --batch_size 256 --num_factors [8] --neg_per_pos 4 --lr 0.001 --learner adam --verbose 1 --out 0
+# python src/MLP.py --dataset ratings.dat --epochs 2 --batch_size 256 --num_factors [8] --neg_per_pos 4 --lr 0.001 --learner adam --verbose 1 --out 0
 
 #################### Arguments ####################
 def parse_args():

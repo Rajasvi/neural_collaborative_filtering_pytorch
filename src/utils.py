@@ -1,3 +1,11 @@
+"""
+Created on April 5, 2022
+
+utils.py contains utility functions for training and evaluating model performance.
+
+@author: Rajasvi Vinayak Sharma (rvsharma@ucsd.edu)
+"""
+
 import torch
 import numpy as np
 import heapq
@@ -8,6 +16,17 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 
 
 def train(dataloader, model, loss_fn, optimizer):
+    """This function is used to train model for given arguments.
+
+    Args:
+        dataloader (torch.utils.data.DataLoader): Training user-item data.
+        model (torch.nn.Module): PyTorch NN model. 
+        loss_fn (torch.nn.): Loss function. Eg. toch.nn.BCELoss
+        optimizer (torch.optim): Optimizer. Eg. torch.optim.Adam
+
+    Returns:
+        list: List of loss per 1000 epochs.
+    """
     size = len(dataloader.dataset)
     model.train()
     tot_loss = []
@@ -33,6 +52,19 @@ def train(dataloader, model, loss_fn, optimizer):
 
 
 def evaluate_test(loss_fn, neg_samples, test_df, model, k=10, neg_num=100):
+    """This function is used to evaluate model performance on negative test samples and calculate evaluation metrics: Eg. HR@10, NDCG@10.
+
+    Args:
+        loss_fn (torch.nn): Loss function. Eg. toch.nn.BCELoss
+        neg_samples (dict): a dict with key: user, value: negative sampels per user.
+        test_df (pd.DataFrame): Test data.
+        model (torch.nn.Module): PyTorch model.
+        k (int, optional): Top k for which evaluation metrics need to be calculated. Defaults to 10.
+        neg_num (int, optional): Number of negative test samples generated per user. Defaults to 100.
+
+    Returns:
+        list: [HR@k, NDCG@k, Mean Loss]
+    """
     users_test_all = test_df["users"].unique()
     ndcg, hit, total = 0, 0, len(users_test_all)
     tot_loss = []
